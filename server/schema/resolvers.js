@@ -32,6 +32,11 @@ const resolvers = {
             if (!correctPw) {
                 throw new AuthenticationError("Incorrect Credentials");
             }
+            const token = signToken(user);
+            return { token, user };
+        },
+        addUser: async (parent, args) => {
+            const token
         }
     }
 
