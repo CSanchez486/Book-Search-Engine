@@ -36,7 +36,18 @@ const resolvers = {
             return { token, user };
         },
         addUser: async (parent, args) => {
-            const token
+            const user = await User.create(args);
+            const token = signToken(user);
+            return { token, user };
+        },
+        saveBook: async (parent, { bookData }, context) => {
+            if (context.user) {
+                return User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { savedBooks: bookData }},
+                    { new:true }
+                );
+            }
         }
     }
 
