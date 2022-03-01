@@ -48,10 +48,22 @@ const resolvers = {
                     { new:true }
                 );
             }
-        }
-    }
+        },
+        removeBook: async (parents, { bookId }, context) => {
+            if (content.user) {
+                return User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { savedBooks: bookId }},
+                    { new:true }
+                );
+            }
+            throw new AuthenticationError("Please Login");
+        },
+    },
 
-},
+};
+
+module.exports = resolvers;
 
 
 
