@@ -16,6 +16,9 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
-    "apollo-server-express": "^3.6.3"
+    "apollo-server-express": "^3.6.3",
+    "bcrypt": "^5.0.1",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1"
   }
 }
