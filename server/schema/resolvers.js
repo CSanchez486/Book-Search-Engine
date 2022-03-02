@@ -10,7 +10,7 @@ const { AuthenticationError } = require("apollo-server-express");
 //  Define the query
 const resolvers = {
     Query: {
-        users: async (parent, args, context) => {
+        me: async (parent, args, context) => {
             if(context.user) {
                 const userDb = await User.findOne({_id: context.user._id}).select(
                     // hides password
